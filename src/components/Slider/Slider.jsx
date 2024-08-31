@@ -8,6 +8,7 @@ const Slider = () => {
                          <img
                               src="https://i.imghippo.com/files/coE0w1725115771.jpg"
                               className="w-full" />
+
                     </div>
                     <div id="item2" className="carousel-item w-full">
                          <img

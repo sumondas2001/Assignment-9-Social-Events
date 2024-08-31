@@ -1,0 +1,30 @@
+import { Link } from "react-router-dom";
+
+
+const Service = ({ service }) => {
+     const { name, img, price, tital, id } = service;
+     return (
+          <div>
+               <div className=" bg-slate-900 p-6 rounded-lg">
+                    <img className="mb-4" src={img} alt="" />
+                    <h1 className="text-2xl font-bold mb-4 text-pink-600">{name}</h1>
+                    <div className="font-medium mb-4">
+                         {
+                              tital.length > 190 ? <p>{tital.slice(0, 190)}
+
+                              </p> : <p>{tital}</p>
+                         }
+                    </div>
+                    <p className="text-xl font-medium mb-8">Price: <span className="text-2xl font-bold"> {price} $</span></p>
+
+                    <div>
+                         <Link to={`/service/${id}`}>
+                              <button className="btn btn-error w-full font-bold mb-4">Details</button>
+                         </Link>
+                    </div>
+               </div>
+          </div>
+     );
+};
+
+export default Service;
