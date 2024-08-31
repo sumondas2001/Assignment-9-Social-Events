@@ -6,8 +6,7 @@ const Root = () => {
      return (
           <div >
                <Navbar></Navbar>
-
-               <Outlet className="max-w-7xl mx-auto"></Outlet>
+               <Outlet ></Outlet>
           </div>
      );
 };
