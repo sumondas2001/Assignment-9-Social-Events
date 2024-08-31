@@ -1,8 +1,13 @@
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 import { useLoaderData, useParams } from "react-router-dom";
 
 
 const ServicesDetails = () => {
+     useEffect(() => {
+          AOS.init();
+     }, [])
      const { id } = useParams();
      const allData = useLoaderData();
      const data = allData.find(data => data.id == id);
@@ -12,7 +17,7 @@ const ServicesDetails = () => {
 
           <div className="mt-8 max-w-7xl  px-4 mx-auto " >
 
-               <img className=" w-full h-96" src={description_img} alt="" />
+               <img data-aos="zoom-out-up" className=" w-full h-96" src={description_img} alt="" />
                <h1 className="text-2xl font-bold mt-4 text-red-500">{name}</h1>
                <p className="text-xl font-medium mb-8 mt-4">Price: <span className="text-2xl font-bold"> {price} $</span></p>
                <p className="mb-10 5 font-medium">{description_tital}</p>
