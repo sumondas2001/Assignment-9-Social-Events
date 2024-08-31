@@ -1,6 +1,7 @@
 
 import About from "../../components/About/About";
 import Slider from "../../components/Slider/Slider";
+import Rating from "../Rating/Rating";
 import Services from "../Services/Services";
 
 
@@ -14,6 +15,7 @@ const Home = () => {
                <Slider ></Slider>
                <Services ></Services>
                <About></About>
+               <Rating></Rating>
 
           </div>
      );
