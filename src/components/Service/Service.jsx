@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
+const Service = ({ SingleService }) => {
 
-const Service = ({ service }) => {
-     const { name, img, price, tital, id } = service;
+     const { name, img, price, tital, id } = SingleService;
      return (
           <div>
                <div className=" bg-slate-900 p-6 rounded-lg">
@@ -28,3 +29,7 @@ const Service = ({ service }) => {
 };
 
 export default Service;
+
+Service.propTypes = {
+     SingleService: PropTypes.object
+}
