@@ -6,6 +6,8 @@ import Services from "../../Page/Services/Services";
 import ServicesDetails from "../../Page/ServicesDetails/ServicesDetails";
 import About from "../About/About";
 import Rating from "../../Page/Rating/Rating";
+import Login from "../../Page/Login/Login";
+import Register from "../../Page/Register/Register";
 
 const router = createBrowserRouter([
      {
@@ -37,7 +39,15 @@ const router = createBrowserRouter([
                {
                     path: "/rating",
                     element: <Rating></Rating>
-               }
+               },
+               {
+                    path: "/login",
+                    element: <Login></Login>
+               },
+               {
+                    path: "/register",
+                    element: <Register></Register>
+               },
           ]
      }
 ])

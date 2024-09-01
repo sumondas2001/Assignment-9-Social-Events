@@ -3,7 +3,7 @@
 const Slider = () => {
      return (
           <div >
-               <div className="carousel mt-4 md:h-96 h-52">
+               <div data-carousel="slide" className="carousel  mt-4 md:h-96 h-52 ">
                     <div id="item1" className="carousel-item w-full">
                          <img
                               src="https://i.imghippo.com/files/coE0w1725115771.jpg"
