@@ -9,7 +9,7 @@ const Login = () => {
      const { userSingIn } = useContext(AuthContext);
      const [error, setError] = useState('');
      const location = useLocation();
-     console.log(location)
+
      const navigate = useNavigate();
      const handelLogin = e => {
           e.preventDefault();

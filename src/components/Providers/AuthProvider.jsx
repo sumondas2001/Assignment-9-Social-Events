@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, updateProfile, } from "firebase/auth";
 import app from "../../firebase/firebase.confige";
 import toast from "react-hot-toast";
 
@@ -56,6 +56,14 @@ const AuthProvider = ({ children }) => {
 
                     toast.success('LogOut Successfully !')
                })
+     };
+
+     const updateProfileName = (name) => {
+          updateProfile(auth.currentUser, {
+               displayName: name
+          })
+               .then()
+               .catch()
      }
 
 
@@ -66,7 +74,8 @@ const AuthProvider = ({ children }) => {
           googleLogin,
           user,
           logOut,
-          loading
+          loading,
+          updateProfileName
 
 
      }

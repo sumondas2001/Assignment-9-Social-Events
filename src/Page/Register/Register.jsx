@@ -6,11 +6,11 @@ import toast from "react-hot-toast";
 
 const Register = () => {
      const [error, setError] = useState('')
-     const { creteUser } = useContext(AuthContext);
+     const { creteUser, updateProfileName } = useContext(AuthContext);
 
      const handelRegister = e => {
           e.preventDefault();
-          // const name = e.target.name.value;
+          const name = e.target.name.value;
           const email = e.target.email.value;
           const password = e.target.password.value;
 
@@ -22,7 +22,8 @@ const Register = () => {
           else {
                creteUser(email, password)
                     .then(() => {
-                         toast.success("Register Successfully !!")
+                         toast.success("Register Successfully !!");
+                         updateProfileName(name)
                     })
                     .catch(error => {
                          const errorMessage = error.message;

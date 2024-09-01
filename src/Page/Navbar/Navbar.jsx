@@ -59,7 +59,29 @@ const Navbar = () => {
 
                     {
                          user ?
-                              <button onClick={handelLogOut} className="btn font-medium btn-info">LogOut</button>
+                              <div className="flex gap-10 items-center">
+
+                                   <div className="dropdown dropdown-end">
+                                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                             <div className="w-9 rounded-full">
+
+                                                  <img src={user?.photoURL} alt={user.displayName} />
+                                             </div>
+                                        </label>
+                                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                             <li>
+                                                  <button className="btn btn-sm  btn-ghost">{user?.displayName || 'user name not found'}</button>
+
+                                             </li>
+                                             <li>
+                                                  <button className="btn btn-sm  btn-ghost">{user?.email}</button>
+
+                                             </li>
+                                        </ul>
+                                   </div>
+
+                                   <button onClick={handelLogOut} className="btn font-medium btn-info">LogOut</button>
+                              </div>
                               : <Link to={"/login"}>
                                    <button className="btn font-medium btn-info">Login</button>
                               </Link>
@@ -72,3 +94,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
