@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import Social from "../../components/Social/Social";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../components/Providers/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
+     const [error, setError] = useState('')
      const { creteUser } = useContext(AuthContext);
 
      const handelRegister = e => {
@@ -13,17 +14,23 @@ const Register = () => {
           const email = e.target.email.value;
           const password = e.target.password.value;
 
-          // if (/(?=.*?[A-Z])(?=.*?[a-z]).{6,}$/.test(password)) 
-          creteUser(email, password)
-               .then(() => {
-                    toast.success("Register Successfully !!")
-               })
-               .catch(error => {
-                    const errorMessage = error.message;
-                    toast.error(errorMessage)
-               })
 
+          if (!/(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{6,}$/.test(password)) {
+               setError('Minimum six characters, at least one uppercase letter,  at At least one special character, ')
 
+          }
+          else {
+               creteUser(email, password)
+                    .then(() => {
+                         toast.success("Register Successfully !!")
+                    })
+                    .catch(error => {
+                         const errorMessage = error.message;
+                         setError(errorMessage)
+                         toast.error(errorMessage)
+                    })
+
+          }
      }
 
      return (
@@ -67,6 +74,7 @@ const Register = () => {
                                    </Link>
                               </div>
                          </form>
+                         <p className="text-xs text-red-600 px-2">{error}</p>
 
                          <Social></Social>
                     </div>

@@ -8,6 +8,7 @@ import About from "../About/About";
 import Rating from "../../Page/Rating/Rating";
 import Login from "../../Page/Login/Login";
 import Register from "../../Page/Register/Register";
+import PrivetRoutes from "../PrivetRoutes/PrivetRoutes";
 
 const router = createBrowserRouter([
      {
@@ -29,7 +30,9 @@ const router = createBrowserRouter([
                },
                {
                     path: "/service/:id",
-                    element: <ServicesDetails></ServicesDetails>,
+                    element: <PrivetRoutes>
+                         <ServicesDetails></ServicesDetails>
+                    </PrivetRoutes>,
                     loader: () => fetch("/data.json"),
                },
                {

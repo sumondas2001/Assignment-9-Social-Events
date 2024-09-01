@@ -22,7 +22,7 @@ const Social = () => {
 
                <div className="flex justify-center gap-6 mt-4">
                     <button onClick={handelGoogleLogin} className="btn text-lg font-semibold hover:bg-emerald-500 hover:text-black ">Google</button>
-                    <button className="hover:text-black btn text-lg font-semibold hover:bg-cyan-600 ">Github</button>
+
                </div>
           </div>
      );

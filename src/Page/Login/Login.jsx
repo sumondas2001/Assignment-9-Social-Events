@@ -1,12 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Social from "../../components/Social/Social";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../components/Providers/AuthProvider";
 import toast from "react-hot-toast";
 
 
 const Login = () => {
      const { userSingIn } = useContext(AuthContext);
+     const [error, setError] = useState('');
+     const location = useLocation();
+     console.log(location)
+     const navigate = useNavigate();
      const handelLogin = e => {
           e.preventDefault();
 
@@ -14,12 +18,15 @@ const Login = () => {
           const password = e.target.password.value;
 
           userSingIn(email, password)
-               .then(result => {
+               .then(() => {
                     toast.success('Login Successfully!');
-                    console.log(result.user)
+                    // console.log(result.user)
+                    navigate(location.state ? location.state : "/")
+
                })
                .catch(error => {
-                    console.log(error.message);
+                    // console.log(error)
+                    setError(error.message);
                     toast.error(error.message)
                })
 
@@ -50,6 +57,7 @@ const Login = () => {
                                    <label className="label">
                                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                    </label>
+                                   <p className="text-xs text-red-600 px-2">{error}</p>
                               </div>
                               <div className="form-control mt-6">
                                    <button className="btn btn-error">Login</button>
