@@ -9,6 +9,8 @@ import Rating from "../../Page/Rating/Rating";
 import Login from "../../Page/Login/Login";
 import Register from "../../Page/Register/Register";
 import PrivetRoutes from "../PrivetRoutes/PrivetRoutes";
+import Booking from "../../Page/Booking/Booking";
+import Location from "../../Page/Location/Location";
 
 const router = createBrowserRouter([
      {
@@ -50,6 +52,18 @@ const router = createBrowserRouter([
                {
                     path: "/register",
                     element: <Register></Register>
+               },
+               {
+                    path: "/booking",
+                    element: <PrivetRoutes>
+                         <Booking></Booking>
+                    </PrivetRoutes>
+               },
+               {
+                    path: "/location",
+                    element: <PrivetRoutes>
+                         <Location></Location>
+                    </PrivetRoutes>
                },
           ]
      }
