@@ -1,7 +1,31 @@
 import { Link } from "react-router-dom";
 import Social from "../../components/Social/Social";
+import { useContext } from "react";
+import { AuthContext } from "../../components/Providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
+     const { creteUser } = useContext(AuthContext);
+
+     const handelRegister = e => {
+          e.preventDefault();
+          // const name = e.target.name.value;
+          const email = e.target.email.value;
+          const password = e.target.password.value;
+
+          // if (/(?=.*?[A-Z])(?=.*?[a-z]).{6,}$/.test(password)) 
+          creteUser(email, password)
+               .then(() => {
+                    toast.success("Register Successfully !!")
+               })
+               .catch(error => {
+                    const errorMessage = error.message;
+                    toast.error(errorMessage)
+               })
+
+
+     }
+
      return (
 
           <div className="hero bg-base-200 min-h-screen ">
@@ -13,24 +37,24 @@ const Register = () => {
                          </p>
                     </div>
                     <div className="card bg-slate-900 w-full max-w-sm shrink-0 shadow-2xl">
-                         <form className="card-body">
+                         <form onSubmit={handelRegister} className="card-body">
                               <div className="form-control">
                                    <label className="label">
                                         <span className="label-text">Your Name</span>
                                    </label>
-                                   <input type="text" placeholder="Name" className="input input-bordered" required />
+                                   <input type="text" placeholder="Name" className="input input-bordered" name="name" required />
                               </div>
                               <div className="form-control">
                                    <label className="label">
                                         <span className="label-text">Your Email</span>
                                    </label>
-                                   <input type="email" placeholder="Email" className="input input-bordered" required />
+                                   <input type="email" placeholder="Email" className="input input-bordered" name="email" required />
                               </div>
                               <div className="form-control">
                                    <label className="label">
                                         <span className="label-text">Password</span>
                                    </label>
-                                   <input type="password" placeholder="password" className="input input-bordered" required />
+                                   <input type="password" placeholder="password" className="input input-bordered" name="password" required />
 
                               </div>
                               <div className="form-control mt-6">
